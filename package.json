@@ -1,0 +1,30 @@
+{
+  "name": "paws-n-play",
+  "version": "1.0.0",
+  "description": "A web application to meet new dogs for your dog!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jakeology/paws-n-play.git"
+  },
+  "author": "Jakeology",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jakeology/paws-n-play/issues"
+  },
+  "homepage": "https://github.com/Jakeology/paws-n-play#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^6.0.1",
+    "express-session": "^1.17.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.9.0"
+  }
+}
