@@ -1,5 +1,5 @@
 const express = require("express");
-const routes = require("./routes");
+const controllers = require("./controllers");
 const sequelize = require("./config/connection");
 const exphbs = require("express-handlebars");
 
@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
-app.use(routes);
+app.use(controllers);
 
 // sync sequelize models to the database, then turn on the server
 sequelize.sync({ force: false }).then(() => {
