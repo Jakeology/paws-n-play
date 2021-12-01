@@ -46,18 +46,25 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   // expects {username: 'jake', email: 'jake@gmail.com', password: 'jakespassword'}
   User.create({
-    username: req.body.username,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
     email: req.body.email,
+    phone_number: req.body.phone_number,
     password: req.body.password,
-  }).then((dbUserData) => {
-    req.session.save(() => {
-      req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.username;
-      req.session.loggedIn = true;
+  })
+    .then((dbUserData) => {
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
 
-      res.json(dbUserData);
+        res.json(dbUserData);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
     });
-  });
 });
 
 router.post("/login", (req, res) => {

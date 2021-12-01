@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
       {
         model: User,
         attributes: ["id", "first_name", "last_name"],
-        as: "Owner",
+        as: "owner",
       },
     ],
   })
@@ -50,19 +50,26 @@ router.get("/:id", (req, res) => {
 // POST /api/pets
 router.post("/", (req, res) => {
   // expects {username: 'jake', email: 'jake@gmail.com', password: 'jakespassword'}
-  User.create({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-  }).then((dbUserData) => {
-    req.session.save(() => {
-      req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.username;
-      req.session.loggedIn = true;
-
-      res.json(dbUserData);
+  Pet.create({
+    name: req.body.name,
+    age: req.body.age,
+    breed: req.body.breed,
+    location: req.body.location,
+    owner_id: req.body.owner_id,
+  })
+    .then((dbPetData) => {
+      res.status(200).json(dbPetData);
+      // req.session.save(() => {
+      //   req.session.user_id = dbUserData.id;
+      //   req.session.username = dbUserData.username;
+      //   req.session.loggedIn = true;
+      //   res.json(dbUserData);
+      // });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
     });
-  });
 });
 
 module.exports = router;
