@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { User, Pet } = require("../../models");
-const checker = require("../../utils/checker");
 
 // GET /api/users
 router.get("/", (req, res) => {

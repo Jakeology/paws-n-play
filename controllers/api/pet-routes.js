@@ -36,7 +36,7 @@ router.get("/:id", (req, res) => {
   })
     .then((dbPetData) => {
       if (!dbPetData) {
-        res.status(404).json({ message: "No pet found with this id" });
+        res.json({ success: false, message: "No pet found with this id" });
         return;
       }
       res.json(dbPetData);
@@ -60,7 +60,6 @@ router.post("/", (req, res) => {
     .then((dbPetData) => {
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
-        //req.session.username = dbUserData.username;
         req.session.loggedIn = true;
         res.json(dbPetData);
       });
@@ -80,7 +79,7 @@ router.delete("/:id", (req, res) => {
   })
     .then((dbUserData) => {
       if (!dbUserData) {
-        res.status(404).json({ message: "No pet found with this id" });
+        res.json({ success: false, message: "No pet found with this id" });
         return;
       }
       res.json(dbUserData);
