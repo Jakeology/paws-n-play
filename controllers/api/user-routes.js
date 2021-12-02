@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User, Pet } = require("../../models");
+const checker = require("../../utils/checker");
 
 // GET /api/users
 router.get("/", (req, res) => {
@@ -44,26 +45,32 @@ router.get("/:id", (req, res) => {
 // POST /api/users
 router.post("/", (req, res) => {
   // expects {username: 'jake', email: 'jake@gmail.com', password: 'jakespassword'}
-  User.create({
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    email: req.body.email,
-    phone_number: req.body.phone_number,
-    password: req.body.password,
-  })
-    .then((dbUserData) => {
-      req.session.save(() => {
-        req.session.user_id = dbUserData.id;
-        //req.session.username = dbUserData.username;
-        req.session.loggedIn = true;
+  User.findOne({ where: { email: req.body.email } }).then((exist) => {
+    if (exist) {
+      return res.json({ success: false, type: "INVALID_EMAIL", message: "Email already registered" });
+    } else {
+      User.create({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email,
+        phone_number: req.body.phone_number,
+        password: req.body.password,
+      })
+        .then((dbUserData) => {
+          req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            //req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
 
-        res.json(dbUserData);
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(400).json(err);
-    });
+            res.json(dbUserData);
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(400).json(err);
+        });
+    }
+  });
 });
 
 router.post("/login", (req, res) => {
