@@ -55,16 +55,35 @@ router.post("/", (req, res) => {
     age: req.body.age,
     breed: req.body.breed,
     location: req.body.location,
-    owner_id: req.body.owner_id,
+    owner_id: req.session.user_id,
   })
     .then((dbPetData) => {
-      res.status(200).json(dbPetData);
-      // req.session.save(() => {
-      //   req.session.user_id = dbUserData.id;
-      //   req.session.username = dbUserData.username;
-      //   req.session.loggedIn = true;
-      //   res.json(dbUserData);
-      // });
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        //req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+        res.json(dbPetData);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// DELETE /api/pets/1
+router.delete("/:id", (req, res) => {
+  Pet.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "No pet found with this id" });
+        return;
+      }
+      res.json(dbUserData);
     })
     .catch((err) => {
       console.log(err);
