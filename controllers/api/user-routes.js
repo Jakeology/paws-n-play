@@ -31,8 +31,7 @@ router.get("/:id", (req, res) => {
   })
     .then((dbUserData) => {
       if (!dbUserData) {
-        res.status(404).json({ message: "No user found with this id" });
-        return;
+        return res.json({ success: false, message: "No user found with this id" });
       }
       res.json(dbUserData);
     })
@@ -74,15 +73,13 @@ router.post("/login", (req, res) => {
     },
   }).then((dbUserData) => {
     if (!dbUserData) {
-      res.status(400).json({ message: "No user with that email address!" });
-      return;
+      return res.json({ success: false, message: "No user with that email address!" });
     }
 
     const validPassword = dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res.status(400).json({ message: "Incorrect password!" });
-      return;
+      return res.json({ success: false, message: "Incorrect password!" });
     }
 
     req.session.save(() => {
@@ -91,7 +88,7 @@ router.post("/login", (req, res) => {
       //req.session.username = dbUserData.username;
       req.session.loggedIn = true;
 
-      res.json({ user: dbUserData, message: "You are now logged in!" });
+      res.json({ user: dbUserData });
     });
   });
 });
@@ -109,8 +106,7 @@ router.put("/:id", (req, res) => {
   })
     .then((dbUserData) => {
       if (!dbUserData[0]) {
-        res.status(404).json({ message: "No user found with this id" });
-        return;
+        return res.json({ success: false, message: "No user found with this id" });
       }
       res.json(dbUserData);
     })
@@ -129,8 +125,7 @@ router.delete("/:id", (req, res) => {
   })
     .then((dbUserData) => {
       if (!dbUserData) {
-        res.status(404).json({ message: "No user found with this id" });
-        return;
+        return res.json({ success: false, message: "No user found with this id" });
       }
       res.json(dbUserData);
     })
