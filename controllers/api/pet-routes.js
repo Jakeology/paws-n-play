@@ -58,11 +58,11 @@ router.post("/", (req, res) => {
     owner_id: req.session.user_id,
   })
     .then((dbPetData) => {
-      req.session.save(() => {
-        req.session.user_id = dbUserData.id;
-        req.session.loggedIn = true;
-        res.json(dbPetData);
-      });
+      // req.session.save(() => {
+      //   req.session.user_id = dbPetData.id;
+      //   req.session.loggedIn = true;
+      //   res.json(dbPetData);
+      // });
     })
     .catch((err) => {
       console.log(err);
