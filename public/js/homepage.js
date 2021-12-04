@@ -1,14 +1,14 @@
 console.clear()
 
 const users = [{
-  name: 'Dalia',
+  name: 'Dog',
   url: 'https://source.unsplash.com/random',
-  text:'let\'s code today',
+  text:'let\'s be friends',
   isBoss: true
 }, {
-  name: 'Hans',
+  name: 'Dog',
   url: 'https://source.unsplash.com/random',
-  text:'hallo ich bin Hans',
+  text:'Hello',
   isBoss: false
 }
 ]
