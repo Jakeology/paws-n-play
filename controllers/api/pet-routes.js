@@ -70,6 +70,25 @@ router.post("/", (req, res) => {
     });
 });
 
+router.put("/:id", (req, res) => {
+  // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
+  Pet.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbUserData) => {
+      if (!dbUserData[0]) {
+        return res.json({ success: false, message: "No Pet found with this id" });
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 // DELETE /api/pets/1
 router.delete("/:id", (req, res) => {
   Pet.destroy({

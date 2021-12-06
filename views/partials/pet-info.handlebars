@@ -1,7 +1,7 @@
 <article class="card">
   <a href="#">
       {{!-- Temp image --}}
-    <img src="https://images.theconversation.com/files/205966/original/file-20180212-58348-7huv6f.jpeg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip" alt="Woof" />
+    <img src="{{pfp}}" alt="Woof" />
 
     <div class="card-content">
       <h2>{{name}}</h2>
@@ -14,7 +14,11 @@
       </div>
       <div class="pet-info right">
         <label for="vaccinated">VACCINATED</label>
-        <p id="vaccinated">✔</p>
+        {{#if vaccinated}}
+        <p id="vaccinated"><i class="fas fa-check"></i></p>
+        {{else}}
+        <p id="vaccinated"><i class="fas fa-times"></i></p>
+        {{/if}}
         <label for="breed">BREED</label>
         <p id="breed">{{breed}}</p>
       </div>
@@ -22,9 +26,7 @@
       <div class="pet-info-bottom">
         <label for="about-me">ABOUT ME</label>
         <p id="about-me">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum explicabo consequatur consectetur fugit
-          molestias perferendis, sint error iste ut, facilis sunt natus optio dolor nesciunt laboriosam obcaecati corporis
-          numquam.
+          {{about}}
         </p>
     </div>
   </a>

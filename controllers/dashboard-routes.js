@@ -25,6 +25,32 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/edit/:id", (req, res) => {
+  Pet.findOne({
+    where: {
+      id: req.params.id,
+    },
+    include: [
+      {
+        model: User,
+        attributes: { exclude: ["password"] },
+      },
+    ],
+  })
+    .then((dbPetData) => {
+      const pet = dbPetData.get({ plain: true });
+
+      res.render("edit-pet", {
+        pet,
+        loggedIn: true,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 router.get("/add-pet", (req, res) => {
   res.render("add-pet", { loggedIn: true });
 });

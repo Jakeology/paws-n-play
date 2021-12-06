@@ -19,9 +19,30 @@ label {
   flex-wrap: wrap;
 }
 
+textarea {
+  resize: none;
+  font-family: "Poppins", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  width: 15%;
+}
+
 body {
   background-color: #f6f6f6;
   font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 header {
@@ -59,13 +80,10 @@ header a {
 footer {
   background-color: #ffbb00;
   color: #2a2b38;
-  display: flex;
-  justify-content: center;
   padding: 1%;
   font-size: 18px;
   width: 100%;
-  position: absolute;
-  bottom: 0;
+  text-align: center;
 }
 
 .btn-no-style {
@@ -278,6 +296,10 @@ footer {
   font-size: 14px;
 }
 
+.pet-form textarea {
+  width: 100%;
+}
+
 .pet-form label {
   color: black;
   font-weight: 400;
@@ -310,19 +332,6 @@ footer {
   cursor: pointer;
 }
 
-.pet-form textarea {
-  resize: none;
-  font-family: "Poppins", sans-serif;
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-
 .pet-form h1 {
   margin-bottom: 1em;
   padding-bottom: 0.5em;
@@ -331,6 +340,81 @@ footer {
 }
 
 /* SIGNUP FORM */
+
+/* EDIT PET */
+
+.edit-pet-page {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto 100px;
+  text-align: center;
+  margin-top: 5em;
+}
+
+.edit-pet {
+  width: 100%;
+}
+
+.edit-pet img {
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  border: 5px solid #ffbb00;
+  margin-bottom: 20px;
+}
+
+.edit-form input {
+  font-family: "Poppins", sans-serif;
+  outline: 0;
+  background: #e6e6e6;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  width: 20em;
+  text-align: center;
+}
+
+.edit-form label {
+  color: black;
+  font-weight: 500;
+}
+
+.edit-form select {
+  font-family: "Poppins", sans-serif;
+  outline: 0;
+  background: #e6e6e6;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.edit-form button {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #ffd000;
+  border: 0;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.edit-form textarea {
+  background: #e6e6e6;
+  width: 30em;
+}
+
+#pet-pfp {
+  width: 50em;
+}
 
 /* DASHBOARD */
 
@@ -358,4 +442,14 @@ footer {
 
 .add-pet-btn a:hover {
   color: #ffbb00;
+}
+
+/* FONTAWESOME ICONS */
+
+.fa-check {
+  color: rgb(0, 255, 0);
+}
+
+.fa-times {
+  color: red;
 }

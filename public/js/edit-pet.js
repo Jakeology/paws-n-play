@@ -1,4 +1,4 @@
-async function addPetHandler(event) {
+async function editPetHandler(event) {
   event.preventDefault();
 
   const name = document.getElementById("pet-name").value.trim();
@@ -8,13 +8,11 @@ async function addPetHandler(event) {
   const vaccinated = document.getElementById("pet-vaccinated").value.trim();
   const about = document.getElementById("pet-about").value.trim();
   const pfp = document.getElementById("pet-pfp").value.trim();
-  
 
-  console.log(vaccinated);
-  
+  const id = window.location.toString().split("/")[window.location.toString().split("/").length - 1];
 
-  const response = await fetch(`/api/pets`, {
-    method: "POST",
+  const response = await fetch(`/api/pets/${id}`, {
+    method: "put",
     body: JSON.stringify({
       name,
       age,
@@ -30,10 +28,12 @@ async function addPetHandler(event) {
   });
 
   if (response.ok) {
-    document.location.replace("/dashboard");
+    document.location.replace("/dashboard/");
   } else {
     alert(response.statusText);
   }
 }
 
-document.querySelector(".add-pet-page").addEventListener("submit", addPetHandler);
+document.querySelector(".edit-form").addEventListener("submit", editPetHandler);
+
+
