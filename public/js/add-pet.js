@@ -1,13 +1,16 @@
 async function addPetHandler(event) {
   event.preventDefault();
 
-  const name = document.querySelector("#pet-name").value.trim();
-  const age = document.querySelector("#pet-age").value.trim();
-  const breed = document.querySelector("#pet-breed").value.trim();
-  const vaccinated = document.querySelector("#pet-vaccinated").value.trim();
-  const about = document.querySelector("#pet-about").value.trim();
-  const pfp = document.querySelector("#pet-pfp").value.trim();
+  const name = document.getElementById("pet-name").value.trim();
+  const age = document.getElementById("pet-age").value.trim();
+  const breed = document.getElementById("pet-breed").value.trim();
+  const location = "Akron"
+  const vaccinated = document.getElementById("pet-vaccinated").value.trim();
+  const about = document.getElementById("pet-about").value.trim();
+  const pfp = document.getElementById("pet-pfp").value.trim();
   
+
+  console.log(vaccinated);
   
 
   const response = await fetch(`/api/pets`, {
@@ -16,6 +19,7 @@ async function addPetHandler(event) {
       name,
       age,
       breed,
+      location,
       vaccinated,
       about,
       pfp,
