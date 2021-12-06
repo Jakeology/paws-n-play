@@ -125,9 +125,8 @@ footer {
   text-decoration: none;
 }
 
-.card a:hover {
-  box-shadow: 3px 3px 8px hsl(0, 0%, 70%);
-  border-radius: 1em;
+.card h2 {
+  color: #ffbb00;
 }
 
 .card img {
@@ -192,6 +191,7 @@ footer {
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  margin-top: 20em;
 }
 
 .form input {
@@ -393,6 +393,10 @@ footer {
   font-size: 14px;
 }
 
+.edit-form .delete-btn {
+  background-color: #ff643d;
+}
+
 .edit-form button {
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
@@ -412,7 +416,7 @@ footer {
   width: 30em;
 }
 
-#pet-pfp {
+#edit-pet-pfp {
   width: 50em;
 }
 
