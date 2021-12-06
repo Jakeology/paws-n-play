@@ -1,0 +1,27 @@
+<div class="pet-dashboard">
+  <h2>My Pets</h2>
+  <div class="add-pet-btn">
+    <a href="/dashboard/add-pet">
+      <i class="fas fa-dog"><i class="fas fa-plus"></i></i>
+    </a>
+  </div>
+</div>
+
+{{#if pets.length}}
+  <section class="cards">
+    {{#each pets as |pet|}}
+      <article class="card">
+        <a href="#">
+          <img
+            src="https://images.theconversation.com/files/205966/original/file-20180212-58348-7huv6f.jpeg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip"
+            alt="Woof"
+          />
+
+          <div class="card-content">
+            <h2>{{name}}</h2>
+          </div>
+        </a>
+      </article>
+    {{/each}}
+  </section>
+{{/if}}
