@@ -31,8 +31,7 @@ router.get("/:id", (req, res) => {
   })
     .then((dbUserData) => {
       if (!dbUserData) {
-        res.status(404).json({ message: "No user found with this id" });
-        return;
+        return res.json({ success: false, message: "No user found with this id" });
       }
       res.json(dbUserData);
     })
@@ -45,18 +44,31 @@ router.get("/:id", (req, res) => {
 // POST /api/users
 router.post("/", (req, res) => {
   // expects {username: 'jake', email: 'jake@gmail.com', password: 'jakespassword'}
-  User.create({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-  }).then((dbUserData) => {
-    req.session.save(() => {
-      req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.username;
-      req.session.loggedIn = true;
+  User.findOne({ where: { email: req.body.email } }).then((exist) => {
+    if (exist) {
+      return res.json({ success: false, type: "INVALID_EMAIL", message: "Email already registered" });
+    } else {
+      User.create({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email,
+        phone_number: req.body.phone_number,
+        password: req.body.password,
+      })
+        .then((dbUserData) => {
+          req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            //req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
 
-      res.json(dbUserData);
-    });
+            res.json(dbUserData);
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(400).json(err);
+        });
+    }
   });
 });
 
@@ -67,24 +79,22 @@ router.post("/login", (req, res) => {
     },
   }).then((dbUserData) => {
     if (!dbUserData) {
-      res.status(400).json({ message: "No user with that email address!" });
-      return;
+      return res.json({ success: false, message: "No user with that email address!" });
     }
 
     const validPassword = dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res.status(400).json({ message: "Incorrect password!" });
-      return;
+      return res.json({ success: false, message: "Incorrect password!" });
     }
 
     req.session.save(() => {
       // declare session variables
       req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.username;
+      //req.session.username = dbUserData.username;
       req.session.loggedIn = true;
 
-      res.json({ user: dbUserData, message: "You are now logged in!" });
+      res.json({ user: dbUserData });
     });
   });
 });
@@ -102,8 +112,7 @@ router.put("/:id", (req, res) => {
   })
     .then((dbUserData) => {
       if (!dbUserData[0]) {
-        res.status(404).json({ message: "No user found with this id" });
-        return;
+        return res.json({ success: false, message: "No user found with this id" });
       }
       res.json(dbUserData);
     })
@@ -122,8 +131,7 @@ router.delete("/:id", (req, res) => {
   })
     .then((dbUserData) => {
       if (!dbUserData) {
-        res.status(404).json({ message: "No user found with this id" });
-        return;
+        return res.json({ success: false, message: "No user found with this id" });
       }
       res.json(dbUserData);
     })
