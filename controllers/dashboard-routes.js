@@ -7,7 +7,6 @@ router.get("/", (req, res) => {
       // use the ID from the session
       owner_id: req.session.user_id,
     },
-    attributes: ["id", "name", "age", "breed", "location"],
     include: [
       {
         model: User,

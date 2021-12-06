@@ -51,7 +51,9 @@ router.post("/", (req, res) => {
     name: req.body.name,
     age: req.body.age,
     breed: req.body.breed,
-    location: req.body.location,
+    vaccinated: req.body.vaccinated,
+    about: req.body.about,
+    pfp: req.body.pfp,
     owner_id: req.session.user_id,
   })
     .then((dbPetData) => {

@@ -1,18 +1,19 @@
 <div class="add-pet-page">
   <form class="pet-form">
     <h1>Add pet</h1>
-    <input type="text" placeholder="Name" id="name" />
-    <input type="number" placeholder="Age" id="age" />
-    <input type="text" placeholder="Breed" id="breed" />
-    <label for="vaccinated">Is your pet vaccinated?</label>
-    <select id="vaccinated" name="vaccination">
+    <input type="text" placeholder="Name*" id="pet-name" />
+    <input type="number" placeholder="Age*" id="pet-age" />
+    <input type="text" placeholder="Breed*" id="pet-breed" />
+    <label for="vaccinated">Is your pet vaccinated?*</label>
+    <select id="pet-vaccinated" name="vaccination">
       <option value="">(select)</option>
       <option value="yes">Yes</option>
       <option value="no">No</option>
     </select>
 
-    <label for="about">Tell us about your pet</label>
-    <textarea id="about" name="about" rows="6"></textarea>
+    <label for="about">Tell us about your pet*</label>
+    <textarea id="pet-about" name="about" rows="6"></textarea>
+    <input type="text" placeholder="Picture link (optional)" id="pet-breed" />
 
     <button>Add Pet</button>
 

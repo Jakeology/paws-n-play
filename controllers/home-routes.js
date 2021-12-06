@@ -3,7 +3,6 @@ const { Pet, User } = require("../models");
 
 router.get("/", (req, res) => {
   Pet.findAll({
-    attributes: ["id", "name", "age", "breed", "location"],
     include: [
       {
         model: User,
