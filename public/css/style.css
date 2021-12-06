@@ -165,7 +165,7 @@ footer {
   margin: 0.5em;
 }
 
-.login-form {
+.form {
   position: relative;
   z-index: 1;
   background: #ffffff;
@@ -176,7 +176,7 @@ footer {
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.login-form input {
+.form input {
   font-family: "Poppins", sans-serif;
   outline: 0;
   background: #f2f2f2;
@@ -189,7 +189,7 @@ footer {
   text-indent: 22px;
 }
 
-.login-form button {
+.form button {
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -204,24 +204,24 @@ footer {
   cursor: pointer;
 }
 
-.login-form h1 {
+.form h1 {
   margin-bottom: 1em;
   padding-bottom: 0.5em;
   color: #2a2b38;
   border-bottom: 2px solid #2a2b38;
 }
 
-.login-form button:hover {
+.form button:hover {
   background: #ffae00;
 }
 
-.login-form .message {
+.form .message {
   margin: 15px 0 0;
   color: #b3b3b3;
   font-size: 12px;
 }
 
-.login-form .message a {
+.form .message a {
   color: #ffd900;
   text-decoration: none;
 }
@@ -329,6 +329,8 @@ footer {
   color: #2a2b38;
   border-bottom: 2px solid #2a2b38;
 }
+
+/* SIGNUP FORM */
 
 /* DASHBOARD */
 

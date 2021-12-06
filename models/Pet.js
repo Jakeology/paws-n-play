@@ -29,6 +29,10 @@ Pet.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     vaccinated: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
