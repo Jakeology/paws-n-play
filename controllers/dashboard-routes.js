@@ -27,7 +27,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/add-pet", (req, res) => {
-  res.render("addpet", { loggedIn: true });
+  res.render("add-pet", { loggedIn: true });
 });
 
 module.exports = router;
