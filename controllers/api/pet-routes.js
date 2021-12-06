@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
       {
         model: User,
         attributes: ["id", "first_name", "last_name"],
-        as: "owner",
+        as: "Owner",
       },
     ],
   })
@@ -36,7 +36,7 @@ router.get("/:id", (req, res) => {
   })
     .then((dbPetData) => {
       if (!dbPetData) {
-        res.json({ success: false, message: "No pet found with this id" });
+        res.status(404).json({ message: "No pet found with this id" });
         return;
       }
       res.json(dbPetData);
@@ -50,44 +50,19 @@ router.get("/:id", (req, res) => {
 // POST /api/pets
 router.post("/", (req, res) => {
   // expects {username: 'jake', email: 'jake@gmail.com', password: 'jakespassword'}
-  Pet.create({
-    name: req.body.name,
-    age: req.body.age,
-    breed: req.body.breed,
-    location: req.body.location,
-    owner_id: req.session.user_id,
-  })
-    .then((dbPetData) => {
-      req.session.save(() => {
-        req.session.user_id = dbUserData.id;
-        req.session.loggedIn = true;
-        res.json(dbPetData);
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+  User.create({
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+  }).then((dbUserData) => {
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
 
-// DELETE /api/pets/1
-router.delete("/:id", (req, res) => {
-  Pet.destroy({
-    where: {
-      id: req.params.id,
-    },
-  })
-    .then((dbUserData) => {
-      if (!dbUserData) {
-        res.json({ success: false, message: "No pet found with this id" });
-        return;
-      }
       res.json(dbUserData);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
     });
+  });
 });
 
 module.exports = router;

@@ -7,7 +7,6 @@ User.hasMany(Pet, {
 
 Pet.belongsTo(User, {
   foreignKey: "owner_id",
-  as: "owner",
 });
 
 module.exports = {
