@@ -7,9 +7,8 @@
   margin: 0;
 }
 
-a {
-  text-decoration: none;
-  color: white;
+p {
+  color: rgb(255, 255, 255);
 }
 
 label {
@@ -52,6 +51,11 @@ header nav a {
   padding: 15px;
 }
 
+header a {
+  text-decoration: none;
+  color: #ffbb00;
+}
+
 footer {
   background-color: #ffbb00;
   color: #2a2b38;
@@ -64,11 +68,24 @@ footer {
   bottom: 0;
 }
 
+.btn-no-style {
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: none;
+  font-weight: normal;
+  color: #ffbb00;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
 .header-paw {
   font-size: 26px;
   padding-left: 5px;
 }
 
+/* Cards */
 .cards {
   display: flex;
   justify-content: center;
@@ -140,4 +157,95 @@ footer {
 
 .right {
   float: right;
+}
+
+/* Login form */
+
+.login-page {
+  width: 360px;
+  padding: 13% 0 0;
+  margin: auto;
+}
+
+.login-form {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.login-form input {
+  font-family: "Poppins", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  text-indent: 22px;
+}
+
+.login-form button {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #ffd000;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.login-form h1 {
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  color: #2a2b38;
+  border-bottom: 2px solid #2a2b38;
+}
+
+.login-form button:hover {
+  background: #ffae00;
+}
+
+.login-form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+
+.login-form .message a {
+  color: #ffd900;
+  text-decoration: none;
+}
+
+.fontuser {
+  position: relative;
+}
+
+.fontuser i {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  color: gray;
+}
+
+.fontpassword {
+  position: relative;
+}
+
+.fontpassword i {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  color: gray;
 }
