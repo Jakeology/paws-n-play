@@ -9,7 +9,6 @@ router.get("/", (req, res) => {
       {
         model: User,
         attributes: ["id", "first_name", "last_name"],
-        as: "owner",
       },
     ],
   })
@@ -30,7 +29,6 @@ router.get("/:id", (req, res) => {
       {
         model: User,
         attributes: ["id", "first_name", "last_name"],
-        as: "Owner",
       },
     ],
   })
@@ -49,7 +47,6 @@ router.get("/:id", (req, res) => {
 
 // POST /api/pets
 router.post("/", (req, res) => {
-  // expects {username: 'jake', email: 'jake@gmail.com', password: 'jakespassword'}
   Pet.create({
     name: req.body.name,
     age: req.body.age,
