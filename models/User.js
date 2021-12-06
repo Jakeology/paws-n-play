@@ -41,7 +41,7 @@ User.init(
       },
     },
     phone_number: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(15),
       allowNull: false,
     },
     password: {
