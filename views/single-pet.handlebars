@@ -1,0 +1,27 @@
+<div class="single-pet-page">
+  <div class="single-pet">
+    <img src="{{pet.pfp}}" alt="Woof" />
+
+    <form class="single-pet-info">
+        <p>Name: {{pet.name}}</p>
+        <p>Age: {{pet.age}}</p>
+        <p>Breed: {{pet.breed}}</p>
+        <p>Location: {{pet.location}}</p>
+        {{#if pet.vaccinated}}
+        <p>Vaccinated: Yes</p>
+        {{else}}
+        <p>Vaccinated: No</p>
+        {{/if}}
+        <br/>
+        <p>About me:<br/>
+            {{pet.about}}</p>
+        
+        <br/>
+        <p>Contact Info:</p>
+        <p>Owner: {{pet.user.first_name}} {{pet.user.last_name}}</p>
+        <p>Email: {{pet.user.email}}</p>
+        <p>Phone Number: {{pet.user.phone_number}}</p>
+    </form>
+    </form>
+  </div>
+</div>

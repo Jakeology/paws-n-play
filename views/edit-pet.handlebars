@@ -1,0 +1,36 @@
+<div class="edit-pet-page">
+  <div class="edit-pet">
+    <img src="{{pet.pfp}}" alt="Woof" />
+
+    <form class="edit-form">
+      <label for="pet-name">Name</label>
+      <input type="text" id="pet-name" value="{{pet.name}}" />
+      <label for="pet-age">Age</label>
+      <input type="text" id="pet-age" value="{{pet.age}}" />
+      <label for="pet-breed">Breed</label>
+      <input type="text" id="pet-breed" value="{{pet.breed}}" />
+      <label for="pet-location">Location</label>
+      <input type="text" id="pet-location" value="{{pet.location}}" />
+      <label for="vaccinated">Is your pet vaccinated?*</label>
+      <select id="pet-vaccinated" name="vaccination">
+        {{#if pet.vaccinated}}
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        {{else}}
+          <option value="false">No</option>
+          <option value="true">Yes</option>
+        {{/if}}
+      </select>
+      <label for="pet-about">About {{pet.name}}</label>
+      <textarea id="pet-about" rows="6">{{pet.about}}</textarea>
+      <label for="edit-pet-pfp">{{pet.name}}'s profile picture</label>
+      <input type="text" value="{{pet.pfp}}" id="edit-pet-pfp" />
+
+      <button>Save Changes</button>
+      <button class="delete-btn">Remove Pet</button>
+    </form>
+  </div>
+</div>
+
+<script src="/js/edit-pet.js"></script>
+<script src="/js/delete-pet.js"></script>
