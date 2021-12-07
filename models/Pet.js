@@ -33,6 +33,18 @@ Pet.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    vaccinated: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    about: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    pfp: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     sequelize,

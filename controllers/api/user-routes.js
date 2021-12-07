@@ -24,7 +24,7 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Pet,
-        attributes: ["id", "name", "age", "breed, location"],
+        attributes: ["id", "name", "age", "breed", "vaccinated", "about"],
         as: "pets",
       },
     ],
@@ -51,14 +51,13 @@ router.post("/", (req, res) => {
       User.create({
         first_name: req.body.first_name,
         last_name: req.body.last_name,
-        email: req.body.email,
         phone_number: req.body.phone_number,
+        email: req.body.email,
         password: req.body.password,
       })
         .then((dbUserData) => {
           req.session.save(() => {
             req.session.user_id = dbUserData.id;
-            //req.session.username = dbUserData.username;
             req.session.loggedIn = true;
 
             res.json(dbUserData);
@@ -79,22 +78,21 @@ router.post("/login", (req, res) => {
     },
   }).then((dbUserData) => {
     if (!dbUserData) {
-      return res.json({ success: false, message: "No user with that email address!" });
+      return res.json({ success: false, type: "INVALID_EMAIL", message: "No user with that email address" });
     }
 
     const validPassword = dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      return res.json({ success: false, message: "Incorrect password!" });
+      return res.json({ success: false, type: "INVALID_PASS", message: "Incorrect password" });
     }
 
     req.session.save(() => {
       // declare session variables
       req.session.user_id = dbUserData.id;
-      //req.session.username = dbUserData.username;
       req.session.loggedIn = true;
 
-      res.json({ user: dbUserData });
+      res.json({ success: true, user: dbUserData, message: "You are now logged in" });
     });
   });
 });

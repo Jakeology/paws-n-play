@@ -1,0 +1,32 @@
+<article class="card">
+  <a href="/pet/{{id}}">
+    <img src="{{pfp}}" alt="Woof" />
+
+    <div class="card-content">
+      <h2>{{name}}</h2>
+
+      <div class="pet-info left">
+        <label for="age">AGE</label>
+        <p id="age">{{age}}</p>
+        <label for="location">LOCATION</label>
+        <p id="location">{{location}}</p>
+      </div>
+      <div class="pet-info right">
+        <label for="vaccinated">VACCINATED</label>
+        {{#if vaccinated}}
+        <p id="vaccinated"><i class="fas fa-check"></i></p>
+        {{else}}
+        <p id="vaccinated"><i class="fas fa-times"></i></p>
+        {{/if}}
+        <label for="breed">BREED</label>
+        <p id="breed">{{breed}}</p>
+      </div>
+
+      <div class="pet-info-bottom">
+        <label for="about-me">ABOUT ME</label>
+        <p id="about-me">
+          {{about}}
+        </p>
+    </div>
+  </a>
+</article>

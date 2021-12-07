@@ -9,7 +9,6 @@ router.get("/", (req, res) => {
       {
         model: User,
         attributes: ["id", "first_name", "last_name"],
-        as: "owner",
       },
     ],
   })
@@ -30,7 +29,6 @@ router.get("/:id", (req, res) => {
       {
         model: User,
         attributes: ["id", "first_name", "last_name"],
-        as: "Owner",
       },
     ],
   })
@@ -49,20 +47,41 @@ router.get("/:id", (req, res) => {
 
 // POST /api/pets
 router.post("/", (req, res) => {
-  // expects {username: 'jake', email: 'jake@gmail.com', password: 'jakespassword'}
   Pet.create({
     name: req.body.name,
     age: req.body.age,
     breed: req.body.breed,
     location: req.body.location,
+    vaccinated: req.body.vaccinated,
+    about: req.body.about,
+    pfp: req.body.pfp,
     owner_id: req.session.user_id,
   })
     .then((dbPetData) => {
-      req.session.save(() => {
-        req.session.user_id = dbUserData.id;
-        req.session.loggedIn = true;
-        res.json(dbPetData);
-      });
+      // req.session.save(() => {
+      //   req.session.user_id = dbPetData.id;
+      //   req.session.loggedIn = true;
+      //   res.json(dbPetData);
+      // });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.put("/:id", (req, res) => {
+  // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
+  Pet.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbUserData) => {
+      if (!dbUserData[0]) {
+        return res.json({ success: false, message: "No Pet found with this id" });
+      }
+      res.json(dbUserData);
     })
     .catch((err) => {
       console.log(err);

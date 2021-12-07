@@ -1,0 +1,24 @@
+<div class="add-pet-page">
+  <form class="pet-form">
+    <h1>Add pet</h1>
+    <input type="text" placeholder="Name*" id="pet-name" />
+    <input type="number" placeholder="Age*" id="pet-age" />
+    <input type="text" placeholder="Breed*" id="pet-breed" />
+    <input type="text" placeholder="Location*" id="pet-location" />
+    <label for="vaccinated">Is your pet vaccinated?*</label>
+    <select id="pet-vaccinated" name="vaccination">
+      <option value="">(select)</option>
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+    </select>
+
+    <label for="about">Tell us about your pet*</label>
+    <textarea id="pet-about" name="about" rows="6"></textarea>
+    <input type="text" placeholder="Picture link (optional)" id="pet-pfp" />
+
+    <button>Add Pet</button>
+
+  </form>
+</div>
+
+<script src="/js/add-pet.js"></script>
