@@ -58,6 +58,7 @@ router.post("/", (req, res) => {
     owner_id: req.session.user_id,
   })
     .then((dbPetData) => {
+      res.json(dbPetData);
     })
     .catch((err) => {
       console.log(err);

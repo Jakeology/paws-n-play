@@ -8,9 +8,8 @@ async function addPetHandler(event) {
   const vaccinated = document.getElementById("pet-vaccinated").value.trim();
   const about = document.getElementById("pet-about").value.trim();
   const pfp = document.getElementById("pet-pfp").value.trim();
-  
 
-  const response = await fetch(`/api/pets`, {
+  await fetch(`/api/pets`, {
     method: "POST",
     body: JSON.stringify({
       name,
@@ -24,13 +23,17 @@ async function addPetHandler(event) {
     headers: {
       "Content-Type": "application/json",
     },
-  });
-
-  if (response.ok) {
-    document.location.replace("/dashboard");
-  } else {
-    alert(response.statusText);
-  }
+  })
+    .then((response) => {
+      if (response.ok) {
+        document.location.replace("/dashboard");
+      } else {
+        alert(response.statusText);
+      }
+    })
+    .catch((error) => {
+      alert(error);
+    });
 }
 
 document.querySelector(".add-pet-page").addEventListener("submit", addPetHandler);

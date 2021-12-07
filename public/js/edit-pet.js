@@ -11,8 +11,8 @@ async function editPetHandler(event) {
 
   const id = window.location.toString().split("/")[window.location.toString().split("/").length - 1];
 
-  const response = await fetch(`/api/pets/${id}`, {
-    method: "put",
+  await fetch(`/api/pets/${id}`, {
+    method: "PUT",
     body: JSON.stringify({
       name,
       age,
@@ -25,15 +25,17 @@ async function editPetHandler(event) {
     headers: {
       "Content-Type": "application/json",
     },
-  });
-
-  if (response.ok) {
-    document.location.replace("/dashboard/");
-  } else {
-    alert(response.statusText);
-  }
+  })
+    .then((response) => {
+      if (response.ok) {
+        document.location.replace("/dashboard");
+      } else {
+        alert(response.statusText);
+      }
+    })
+    .catch((error) => {
+      alert(error);
+    });
 }
 
 document.querySelector(".edit-form").addEventListener("submit", editPetHandler);
-
-
