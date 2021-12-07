@@ -17,7 +17,10 @@
             {{pet.about}}</p>
         
         <br/>
-        <p>Owner: {{user.first_name}} {{user.last_name}}</p>
+        <p>Contact Info:</p>
+        <p>Owner: {{pet.user.first_name}} {{pet.user.last_name}}</p>
+        <p>Email: {{pet.user.email}}</p>
+        <p>Phone Number: {{pet.user.phone_number}}</p>
     </form>
     </form>
   </div>

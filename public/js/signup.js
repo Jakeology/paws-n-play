@@ -10,7 +10,7 @@ async function signupFormHandler(event) {
   const email = document.getElementById("email-signup").value.trim();
   const password = document.getElementById("password-signup").value.trim();
 
-  if (first_name && last_name && phone && email && password) {
+  if (first_name && last_name && phone_number && email && password) {
     await fetch("/api/users", {
       method: "post",
       body: JSON.stringify({
@@ -23,7 +23,11 @@ async function signupFormHandler(event) {
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => {
-        return response.json();
+        if (response.ok) {
+          document.location.replace("/dashboard/");
+        } else {
+          alert(response.statusText);
+        }
       })
       .catch((error) => {
         alert(error);
