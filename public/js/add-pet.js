@@ -10,9 +10,6 @@ async function addPetHandler(event) {
   const pfp = document.getElementById("pet-pfp").value.trim();
   
 
-  console.log(vaccinated);
-  
-
   const response = await fetch(`/api/pets`, {
     method: "POST",
     body: JSON.stringify({
