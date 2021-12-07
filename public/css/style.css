@@ -116,7 +116,7 @@ footer {
   width: 22em;
   font-family: "Poppins", Sans-serif;
   background-color: #2a2b38;
-  margin: 0.5em;
+  margin: 2em 0 0 0;
   border-radius: 1em;
 }
 
@@ -179,7 +179,7 @@ footer {
 /* Login form */
 
 .login-page {
-  margin: 0.5em;
+  margin: 15em;
 }
 
 .form {
@@ -191,7 +191,6 @@ footer {
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  margin-top: 20em;
 }
 
 .form input {
@@ -470,6 +469,7 @@ footer {
 .single-pet p {
   color: black;
   text-align: center;
+  font-size: 20px;
 }
 
 /* FONTAWESOME ICONS */
@@ -481,3 +481,8 @@ footer {
 .fa-times {
   color: red;
 }
+
+.signup-page {
+  margin-top: 10em;
+}
+
